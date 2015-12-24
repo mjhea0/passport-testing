@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>{{ title }}</title>
+    <!-- stylesheets -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+
+    {% block styles %}
+    {% endblock %}
+
+  </head>
+  <body>
+
+    {% include './partials/header.html' %}
+
+    <!-- Page Content -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 ">
+          {% include "./partials/flash.html" %}
+          {% block content %}
+          {% endblock %}
+          </div>
+      </div>
+
+      {% include './partials/footer.html' %}
+
+    </div><!-- /.container -->
+
+    <!-- scripts -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/main.js"></script>
+
+    {% block scripts %}
+    {% endblock %}
+
+  </body>
+</html>
