@@ -15,7 +15,6 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         {% if user %}
-          <li><span>Welcome, <em>{{ user.username }}</em>!</span></li>
           <li><a href="/auth/logout">Logout</a></li>
         {% else %}
           <li><a href="/auth/login">Login</a></li>

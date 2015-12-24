@@ -4,7 +4,11 @@
 
 <div class="row text-center">
   <br>
-  <h1>Welcome, friend!</h1>
+  {% if user %}
+    <h1>Welcome, <em>{{user.username}}</em>!</h1>
+  {% else %}
+    <h1>Welcome, <em>stranger</em>!</h1>
+  {% endif %}
   <br>
   <h3><a href="/ping">Ping</a></h3>
 </div>

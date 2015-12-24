@@ -24,7 +24,7 @@ describe('When unauthenticated', function() {
     .end(function(err, res) {
       res.should.have.status(200);
       res.should.be.html; // jshint ignore:line
-      res.text.should.have.string('<h1>Welcome, friend!</h1>');
+      res.text.should.have.string('<h1>Welcome, <em>stranger</em>!</h1>');
       res.text.should.have.string('<h3><a href="/ping">Ping</a></h3>');
       res.text.should.have.string(
         '<a class="navbar-brand" id="brand" href="/">Passport-Testing</a>'
@@ -46,7 +46,7 @@ describe('When unauthenticated', function() {
     .end(function(err, res) {
       res.should.have.status(200);
       res.should.be.html;  // jshint ignore:line
-      res.text.should.have.string('<h1>Welcome, friend!</h1>');
+      res.text.should.have.string('<h1>Welcome, <em>stranger</em>!</h1>');
       res.text.should.have.string('<h3><a href="/ping">Ping</a></h3>');
       res.text.should.have.string(
         '<a class="navbar-brand" id="brand" href="/">Passport-Testing</a>'
@@ -71,7 +71,7 @@ describe('When authenticated', function() {
     mongoose.connection.db.dropDatabase();
 
     var testUser = new User({
-      username: 'michael',
+      username: 'michael@mherman.org',
       password: 'michael'
     });
 
@@ -95,7 +95,10 @@ describe('When authenticated', function() {
     .end(function(err, res) {
       res.should.have.status(200);
       res.should.be.html; // jshint ignore:line
-      res.text.should.have.string('<h1>Welcome, friend!</h1>');
+      res.text.should.have.string(
+        '<h1>Welcome, <em>michael@mherman.org</em>!</h1>'
+      );
+      res.text.should.not.have.string('<h1>Welcome, <em>stranger</em>!</h1>');
       res.text.should.have.string('<h3><a href="/ping">Ping</a></h3>');
       res.text.should.have.string(
         '<a class="navbar-brand" id="brand" href="/">Passport-Testing</a>'
