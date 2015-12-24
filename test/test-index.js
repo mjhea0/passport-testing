@@ -40,7 +40,7 @@ describe('When unauthenticated', function() {
     });
   });
 
-  it('ping should render correctly', function(done) {
+  it('ping should redirect correctly', function(done) {
     chai.request(server)
     .get('/ping')
     .end(function(err, res) {
